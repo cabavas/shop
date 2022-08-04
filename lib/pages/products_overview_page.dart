@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/components/app_drawer.dart';
+import 'package:shop/components/badge.dart';
 import 'package:shop/components/product_grid.dart';
+import 'package:shop/models/cart.dart';
 import 'package:shop/utils/app_routes.dart';
-
-import '../components/badge.dart';
-import '../models/cart.dart';
 
 enum FilterOptions {
   Favorite,
@@ -16,11 +15,11 @@ class ProductsOverviewPage extends StatefulWidget {
   ProductsOverviewPage({Key? key}) : super(key: key);
 
   @override
-  State<ProductsOverviewPage> createState() => _ProductsOverviewPageState();
+  _ProductsOverviewPageState createState() => _ProductsOverviewPageState();
 }
 
 class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
-  bool _showFavoritOnly = false;
+  bool _showFavoriteOnly = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +42,9 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
             onSelected: (FilterOptions selectedValue) {
               setState(() {
                 if (selectedValue == FilterOptions.Favorite) {
-                  _showFavoritOnly = true;
+                  _showFavoriteOnly = true;
                 } else {
-                  _showFavoritOnly = false;
+                  _showFavoriteOnly = false;
                 }
               });
             },
@@ -64,7 +63,7 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
           ),
         ],
       ),
-      body: ProductGrid(_showFavoritOnly),
+      body: ProductGrid(_showFavoriteOnly),
       drawer: AppDrawer(),
     );
   }

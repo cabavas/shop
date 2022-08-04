@@ -41,7 +41,7 @@ class ProductDetailPage extends StatelessWidget {
                 product.description,
                 textAlign: TextAlign.center,
               ),
-            )
+            ),
           ],
         ),
       ),

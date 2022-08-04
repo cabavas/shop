@@ -21,6 +21,4 @@ class Product with ChangeNotifier {
     isFavorite = !isFavorite;
     notifyListeners();
   }
-
-  void addItem(Product product) {}
 }
