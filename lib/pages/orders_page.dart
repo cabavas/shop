@@ -14,7 +14,7 @@ class OrdersPage extends StatelessWidget {
       drawer: AppDrawer(),
       body: FutureBuilder(
         future: Provider.of<OrderList>(context, listen: false).loadOrders(),
-        builder: (context, snapshot) {
+        builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.error != null) {
@@ -23,7 +23,7 @@ class OrdersPage extends StatelessWidget {
             );
           } else {
             return Consumer<OrderList>(
-              builder: (context, orders, child) => ListView.builder(
+              builder: (ctx, orders, child) => ListView.builder(
                 itemCount: orders.itemsCount,
                 itemBuilder: (ctx, i) => OrderWidget(order: orders.items[i]),
               ),

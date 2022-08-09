@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:shop/models/cart.dart';
 import 'package:shop/models/cart_item.dart';
 import 'package:shop/models/order.dart';
-import '../utils/contants.dart';
+import 'package:shop/utils/constants.dart';
 
 class OrderList with ChangeNotifier {
   List<Order> _items = [];

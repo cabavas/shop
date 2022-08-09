@@ -78,6 +78,7 @@ class CartButton extends StatefulWidget {
 class _CartButtonState extends State<CartButton> {
   bool _isLoading = false;
 
+  @override
   Widget build(BuildContext context) {
     return _isLoading
         ? CircularProgressIndicator()

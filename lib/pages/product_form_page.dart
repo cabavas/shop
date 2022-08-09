@@ -64,11 +64,10 @@ class _ProductFormPageState extends State<ProductFormPage> {
 
   bool isValidImageUrl(String url) {
     bool isValidUrl = Uri.tryParse(url)?.hasAbsolutePath ?? false;
-    // bool endsWithFile = url.toLowerCase().endsWith('.png') ||
-    //     url.toLowerCase().endsWith('.jpg') ||
-    //     url.toLowerCase().endsWith('.jpeg');
-    // return isValidUrl && endsWithFile;
-    return isValidUrl;
+    bool endsWithFile = url.toLowerCase().endsWith('.png') ||
+        url.toLowerCase().endsWith('.jpg') ||
+        url.toLowerCase().endsWith('.jpeg');
+    return isValidUrl && endsWithFile;
   }
 
   Future<void> _submitForm() async {
