@@ -8,8 +8,8 @@ import 'package:shop/models/product.dart';
 import 'package:shop/utils/constants.dart';
 
 class ProductList with ChangeNotifier {
-  String _token;
-  String _userId;
+  final String _token;
+  final String _userId;
   List<Product> _items = [];
 
   List<Product> get items => [..._items];
@@ -36,11 +36,12 @@ class ProductList with ChangeNotifier {
 
     final favResponse = await http.get(
       Uri.parse(
-        '${Constants.USER_FAVORITES_URL}/$_userId/$_userId.json?auth=$_token',
+        '${Constants.USER_FAVORITES_URL}/$_userId.json?auth=$_token',
       ),
     );
 
-    Map<String, dynamic> favData = favResponse.body == 'null' ? {} : jsonDecode(favResponse.body);
+    Map<String, dynamic> favData =
+        favResponse.body == 'null' ? {} : jsonDecode(favResponse.body);
 
     Map<String, dynamic> data = jsonDecode(response.body);
     data.forEach((productId, productData) {
@@ -107,7 +108,8 @@ class ProductList with ChangeNotifier {
     if (index >= 0) {
       await http.patch(
         Uri.parse(
-            '${Constants.PRODUCT_BASE_URL}/${product.id}.json?auth=$_token'),
+          '${Constants.PRODUCT_BASE_URL}/${product.id}.json?auth=$_token',
+        ),
         body: jsonEncode(
           {
             "name": product.name,
@@ -133,7 +135,8 @@ class ProductList with ChangeNotifier {
 
       final response = await http.delete(
         Uri.parse(
-            '${Constants.PRODUCT_BASE_URL}/${product.id}.json?auth=$_token'),
+          '${Constants.PRODUCT_BASE_URL}/${product.id}.json?auth=$_token',
+        ),
       );
 
       if (response.statusCode >= 400) {
